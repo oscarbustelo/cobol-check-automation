@@ -22,9 +22,11 @@ echo "Current directory: $(pwd)"
 ls -al
 
 # Cambiar a la carpeta cobolcheck
-cd /z/z53746/cobolcheck || { echo "Error: No se pudo encontrar el directorio /z/z53746/cobolcheck"; exit 1; }
-echo "Changed to $(pwd)"
-ls -al
+if [ -d "/z/z53746/cobolcheck" ]; then
+    JAR_PATH="/z/z53746/cobolcheck/cobol-check-0.2.9.jar"
+else
+    JAR_PATH="/home/runner/work/cobol-check-automation/cobol-check-automation/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
+fi
 
 # Verificar que cobolcheck es un .jar y ejecutarlo correctamente
 if [ ! -f "cobolcheck-0.2.9.jar" ]; then
@@ -42,7 +44,7 @@ run_cobolcheck() {
     echo "Running cobolcheck for $program"
     
     # Ejecutar cobolcheck con Java
-    java -jar /z/z53746/cobolcheck/cobolcheck-0.2.9.jar -p "$program"
+    java -jar "$JAR_PATH" -p "$program"
     echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
     # Subir CC##99.CBL al dataset si existe
