@@ -25,7 +25,8 @@ ls -al
 if [ -d "/z/z53746/cobolcheck" ]; then
     JAR_PATH="/z/z53746/cobolcheck/cobol-check-0.2.9.jar"
 else
-    JAR_PATH="/home/runner/work/cobol-check-automation/cobol-check-automation/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
+    JAR_PATH="/home/runner/work/cobol-check-automation/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
+    
 fi
 
 # Verificar que cobolcheck es un .jar y ejecutarlo correctamente
