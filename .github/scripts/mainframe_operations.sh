@@ -18,8 +18,11 @@ java -version
 # Set ZOWE_USERNAME
 ZOWE_USERNAME="Z53746" # Reemplaza con el usuario real
 
+echo "Current directory: $(pwd)"
+ls -al
+
 # Cambiar a la carpeta cobolcheck
-cd cobolcheck || { echo "Error: No se pudo encontrar el directorio cobolcheck"; exit 1; }
+cd /z/z53746/cobolcheck || { echo "Error: No se pudo encontrar el directorio /z/z53746/cobolcheck"; exit 1; }
 echo "Changed to $(pwd)"
 ls -al
 
@@ -39,7 +42,7 @@ run_cobolcheck() {
     echo "Running cobolcheck for $program"
     
     # Ejecutar cobolcheck con Java
-    java -jar cobolcheck-0.2.9.jar -p "$program"
+    java -jar /z/z53746/cobolcheck/cobolcheck-0.2.9.jar -p "$program"
     echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
     # Subir CC##99.CBL al dataset si existe
