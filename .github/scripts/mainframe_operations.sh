@@ -18,22 +18,23 @@ java -version
 # Set ZOWE_USERNAME
 ZOWE_USERNAME="Z53746" # Reemplaza con el usuario real
 
-echo "Current directory: $(pwd)"
-ls -al
+# Capturar el directorio actual
+BASE_DIR=$(pwd)
 
-# Cambiar a la carpeta cobolcheck
-if [ -d "/z/z53746/cobolcheck" ]; then
-    JAR_PATH="/z/z53746/cobolcheck/cobol-check-0.2.9.jar"
-else
-    JAR_PATH="/home/runner/work/cobol-check-automation/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
-    
-fi
+# Construir la ruta completa del JAR
+JAR_PATH="$BASE_DIR/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
 
-# Verificar que cobolcheck es un .jar y ejecutarlo correctamente
-if [ ! -f "cobolcheck-0.2.9.jar" ]; then
-    echo "Error: No se encontró cobolcheck-0.2.9.jar"
+# Mostrar la ruta para depuración
+echo "Usando JAR en: $JAR_PATH"
+
+# Verificar que el JAR existe
+if [ ! -f "$JAR_PATH" ]; then
+    echo "Error: No se encontró cobolcheck-0.2.9.jar en $JAR_PATH"
     exit 1
 fi
+
+# Ejecutar el JAR
+java -jar "$JAR_PATH" -p "$program"
 
 # Hacer ejecutables los scripts
 chmod +x scripts/linux_gnucobol_run_tests
