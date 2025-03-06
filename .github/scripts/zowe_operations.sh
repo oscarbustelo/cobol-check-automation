@@ -13,9 +13,9 @@ else
 fi
 # Upload files
 # Subir el directorio sin marcarlo como binario (archivos de texto normales)
-zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --zosmf-profile zosmf
+zowe zos-files upload dir-to-uss "./COBOL-CHECK" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --zosmf-profile zosmf
 # Subir el .jar como binario
-zowe zos-files upload file-to-uss "./cobol-check/cobol-check-0.2.9.jar" "/z/$LOWERCASE_USERNAME/cobolcheck/cobol-check-0.2.9.jar" --binary --zosmf-profile zosmf
+zowe zos-files upload file-to-uss "./COBOL-CHECK/cobol-check-0.2.9.jar" "/z/$LOWERCASE_USERNAME/cobolcheck/cobol-check-0.2.9.jar" --binary --zosmf-profile zosmf
 # Verify upload
 echo "Verifying upload:"
 zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" --zosmf-profile $ZOSMF_PROFILE
