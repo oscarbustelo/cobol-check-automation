@@ -24,8 +24,12 @@ BASE_DIR=$(pwd)
 # Construir la ruta completa del JAR
 JAR_PATH="$BASE_DIR/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
 
-# Mostrar la ruta para depuración
+# Construir la ruta del config.properties
+JAR_PATH_CONF="$BASE_DIR/COBOL-CHECK/config.properties"
+
+# Mostrar las rutas para depuración
 echo "Usando JAR en: $JAR_PATH"
+echo "Usando JAR en: $JAR_PATH_CONF"
 
 # Verificar que el JAR existe
 if [ ! -f "$JAR_PATH" ]; then
@@ -34,7 +38,8 @@ if [ ! -f "$JAR_PATH" ]; then
 fi
 
 # Ejecutar el JAR
-java -jar "$JAR_PATH" -p "$program"
+# java -jar "$JAR_PATH" -p "$program"
+java -Dconfig.file="$JAR_PATH_CONF" -jar "$JAR_PATH" -p "$program"
 
 # Hacer ejecutables los scripts
 chmod +x scripts/linux_gnucobol_run_tests
