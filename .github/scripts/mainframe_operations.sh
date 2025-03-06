@@ -27,9 +27,13 @@ JAR_PATH="$BASE_DIR/COBOL-CHECK/bin/cobol-check-0.2.9.jar"
 # Construir la ruta del config.properties
 JAR_PATH_CONF="$BASE_DIR/COBOL-CHECK/config.properties"
 
+# Construir la ruta del linux_gnucobol_run_tests
+JAR_PATH_LIN="$BASE_DIR/COBOL-CHECK/scripts/linux_gnucobol_run_tests"
+
 # Mostrar las rutas para depuración
 echo "Usando JAR en: $JAR_PATH"
 echo "Usando config en: $JAR_PATH_CONF"
+echo "Usando linux_gnucobol_run_tests en: $JAR_PATH_LIN"
 
 # Verificar que el JAR existe
 if [ ! -f "$JAR_PATH" ]; then
@@ -43,8 +47,15 @@ if [ ! -f "$JAR_PATH_CONF" ]; then
     exit 1
 fi
 
+# Verificar que el linux_gnucobol_run_tests existe
+if [ ! -f "$JAR_PATH_LIN" ]; then
+    echo "Error: No se encontró linux_gnucobol_run_tests en $JAR_PATH_LIN"
+    exit 1
+fi
+
 # Hacer ejecutables los scripts
-chmod +x scripts/linux_gnucobol_run_tests
+# chmod +x scripts/linux_gnucobol_run_tests
+chmod +x "$JAR_PATH_LIN"
 echo "Made linux_gnucobol_run_tests executable"
 
 # Ejecutar el JAR
