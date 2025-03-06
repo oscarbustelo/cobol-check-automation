@@ -43,13 +43,13 @@ if [ ! -f "$JAR_PATH_CONF" ]; then
     exit 1
 fi
 
-# Ejecutar el JAR
-# java -jar "$JAR_PATH" -p "$program"
-java -Dconfig.file="$JAR_PATH_CONF" -jar "$JAR_PATH" -p "$program"
-
 # Hacer ejecutables los scripts
 chmod +x scripts/linux_gnucobol_run_tests
 echo "Made linux_gnucobol_run_tests executable"
+
+# Ejecutar el JAR
+# java -jar "$JAR_PATH" -p "$program"
+java -Dconfig.file="$JAR_PATH_CONF" -jar "$JAR_PATH" -p "$program"
 
 # Función para ejecutar cobolcheck y copiar archivos
 run_cobolcheck() {
