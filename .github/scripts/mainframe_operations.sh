@@ -29,11 +29,17 @@ JAR_PATH_CONF="$BASE_DIR/COBOL-CHECK/config.properties"
 
 # Mostrar las rutas para depuración
 echo "Usando JAR en: $JAR_PATH"
-echo "Usando JAR en: $JAR_PATH_CONF"
+echo "Usando config en: $JAR_PATH_CONF"
 
 # Verificar que el JAR existe
 if [ ! -f "$JAR_PATH" ]; then
     echo "Error: No se encontró cobolcheck-0.2.9.jar en $JAR_PATH"
+    exit 1
+fi
+
+# Verificar que el config existe
+if [ ! -f "$JAR_PATH_CONF" ]; then
+    echo "Error: No se encontró config.properties en $JAR_PATH_CONF"
     exit 1
 fi
 
