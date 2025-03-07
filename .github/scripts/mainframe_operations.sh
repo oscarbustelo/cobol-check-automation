@@ -69,7 +69,7 @@ run_cobolcheck() {
     
     # Ejecutar cobolcheck con Java
 #   java -jar "$JAR_PATH" -p "$program"
-    java -Dconfig.file="$JAR_PATH_CONF" -jar "$JAR_PATH_CONF" -p "$program" 
+    java -Dconfig.file="$JAR_PATH_CONF" -jar "$JAR_PATH" -p "$program" 
     echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
 
     # Subir CC##99.CBL al dataset si existe
