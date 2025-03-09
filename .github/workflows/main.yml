@@ -2,7 +2,7 @@ name: COBOL Check Automation
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, ale ]
 
 jobs:
   cobol-check:
