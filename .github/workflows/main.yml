@@ -19,6 +19,10 @@ jobs:
     - name: Install Zowe CLI
       run: npm install -g @zowe/cli
 
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: gnucobol
+
     - name: Setup Mainframe Environment and Upload COBOL Check
       env:
         ZOWE_OPT_HOST: 204.90.115.200
