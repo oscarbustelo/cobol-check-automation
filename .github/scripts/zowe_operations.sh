@@ -10,6 +10,15 @@ if ! zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" &>/dev/nu
 else
     echo "Directory already exists."
 fi
+
+# Check if cbl directory exists, create if it doesn't
+if ! zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cbl" &>/dev/null; then
+    echo "Directory cbl does not exist. Creating it..."
+    zowe zos-files create uss-directory /z/$LOWERCASE_USERNAME/cbl
+else
+    echo "Directory cbl already exists."
+fi
+
 # Upload files
 zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files "bin/cobol-check-0.2.16.jar"
 
