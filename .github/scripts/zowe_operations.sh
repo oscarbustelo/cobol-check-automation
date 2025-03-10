@@ -18,6 +18,7 @@ if ! zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cbl" &>/dev/null; the
 else
     echo "Directory cbl already exists."
 fi
+zowe zos-files issue ssh "chmod 777 /z/$LOWERCASE_USERNAME/cbl"
 
 # Upload files
 zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files "bin/cobol-check-0.2.16.jar"
