@@ -11,7 +11,7 @@ else
     USS_PATH="/z/$LOWERCASE_USERNAME"
 fi
 
-
+echo "-------------------------> "$USS_PATH
 
 # Convert username to lowercase
 #LOWERCASE_USERNAME=$(echo "$ZOWE_USERNAME" | tr '[:upper:]' '[:lower:]')
