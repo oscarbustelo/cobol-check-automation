@@ -21,7 +21,7 @@ cd scripts
 chmod +x linux_gnucobol_run_tests
 echo "Made linux_gnucobol_run_tests executable"
 cd ..
-# Function to run cobolcheck and copy files
+# Function to run cobolcheck and copy files 
 
 run_cobolcheck() {
     program=$1
