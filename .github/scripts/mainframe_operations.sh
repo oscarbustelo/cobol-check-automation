@@ -46,7 +46,7 @@ run_cobolcheck() {
     # Verificar si el archivo JCL existe
     if [ -f "../temp/${program}.JCL" ]; then
         # Copiar el archivo JCL a la carpeta USS
-        if cp "../temp/${program}.JCL" "/z/z53746.JCL(${program})"; then
+        if cp "../temp/${program}.JCL" "/z/${ZOWE_USERNAME}.JCL(${program})"; then
             echo "Copied ${program}.JCL to /z/z53746/jcl/${program}.JCL"
         else
             echo "Failed to copy ${program}.JCL to /z/z53746/jcl/${program}.JCL"
