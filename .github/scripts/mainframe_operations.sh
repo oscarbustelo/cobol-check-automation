@@ -43,8 +43,9 @@ run_cobolcheck() {
     fi    
     
     # Subir el JCL si existe
-    if [ -f "${program}.JCL" ]; then
-        zowe zos-files upload file-to-data-set "${program}.JCL" "${ZOWE_USERNAME}.JCL($program)" --zosmf-profile zosmf && \
+    #if [ -f "${program}.JCL" ]; then
+    if [ -f "../temp/${program}.JCL" ]; then
+        zowe zos-files upload file-to-data-set "../temp/${program}.JCL" "${ZOWE_USERNAME}.JCL($program)" --zosmf-profile zosmf && \
         echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)" || \
         echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
     else
