@@ -30,16 +30,19 @@ run_cobolcheck() {
     ./cobolcheck -p $program
     echo "Cobolcheck execution completed for $program (exceptions may have occurred)"
     # Check if CC##99.CBL was created, regardless of cobolcheck exit status
+
     if [ -f "CC##99.CBL" ]; then
         # Copy to the MVS dataset
-        if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
-            echo "Copied CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
+        if cp "CC##99.CBL" "/z/${ZOWE_USERNAME}/cbl/${program}.CBL"; then
+            echo "Copied CC##99.CBL to /z/${ZOWE_USERNAME}/cbl/${program}.CBL"
         else
-            echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}.CBL($program)"
-    fi
+            echo "Failed to copy CC##99.CBL to /z/${ZOWE_USERNAME}/cbl/${program}.CBL"
+        fi
     else
         echo "CC##99.CBL not found for $program"
-    fi
+    fi            
+    #    if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
+
     # Copy the JCL file if it exists
     if [ -f "${program}.JCL" ]; then
         if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
