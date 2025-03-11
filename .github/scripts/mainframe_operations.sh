@@ -33,15 +33,23 @@ run_cobolcheck() {
 
     if [ -f "CC##99.CBL" ]; then
         # Copy to the MVS dataset
-        if cp "CC##99.CBL" "/z/${ZOWE_USERNAME}.CBL(${program}); then
+        if cp "CC##99.CBL" "/z/${ZOWE_USERNAME}.CBL(${program})"; then
             echo "Copied CC##99.CBL to /z/${ZOWE_USERNAME}/cbl/${program}.CBL"
         else
             echo "Failed to copy CC##99.CBL to /z/${ZOWE_USERNAME}/cbl/${program}.CBL"
         fi
     else
         echo "CC##99.CBL not found for $program"
-    fi            
-
+    fi    
+    
+    # Subir el JCL si existe
+    if [ -f "${program}.JCL" ]; then
+        zowe zos-files upload file-to-data-set "${program}.JCL" "${ZOWE_USERNAME}.JCL($program)" --zosmf-profile zosmf && \
+        echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)" || \
+        echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+    else
+        echo "${program}.JCL not found"
+    fi
 
 }
 
