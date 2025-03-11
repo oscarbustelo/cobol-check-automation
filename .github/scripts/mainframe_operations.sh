@@ -43,16 +43,26 @@ run_cobolcheck() {
     fi            
     #    if cp CC##99.CBL "//'${ZOWE_USERNAME}.CBL($program)'"; then
 
-    # Copy the JCL file if it exists
-    if [ -f "${program}.JCL" ]; then
-        if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
-            echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+    # Verificar si el archivo JCL existe
+    if [ -f "../temp/${program}.JCL" ]; then
+        # Copiar el archivo JCL a la carpeta USS
+        if cp "../temp/${program}.JCL" "/z/z53746.JCL(${program})"; then
+            echo "Copied ${program}.JCL to /z/z53746/jcl/${program}.JCL"
         else
-            echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+            echo "Failed to copy ${program}.JCL to /z/z53746/jcl/${program}.JCL"
         fi
     else
-        echo "${program}.JCL not found"
+        echo "${program}.JCL not found in ../temp"
     fi
+
+
+    # Copy the JCL file if it exists
+    #if [ -f "${program}.JCL" ]; then
+    #    if cp ${program}.JCL "//'${ZOWE_USERNAME}.JCL($program)'"; then
+    #        echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+    #   else
+    #        echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
+
 }
 
 # Run for each program
