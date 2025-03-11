@@ -32,6 +32,14 @@ else
     echo "Directory cbl already exists."
 fi
 
+# Check if jcl directory exists, create if it doesn't
+if ! zowe zos-files list uss-files "$USS_PATH/jcl" &>/dev/null; then
+    echo "Directory jcl does not exist. Creating it..."
+    zowe zos-files create uss-directory $USS_PATH/jcl
+else
+    echo "Directory jcl already exists."
+fi
+
 #zowe zos-uss issue ssh "chmod 777 $USS_PATH/cbl"
 #zowe zos-uss issue shell "chmod 755 $USS_PATH/cbl"
 
