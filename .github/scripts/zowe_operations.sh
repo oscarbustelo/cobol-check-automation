@@ -33,7 +33,7 @@ else
 fi
 
 #zowe zos-uss issue ssh "chmod 777 $USS_PATH/cbl"
-zowe zos-uss issue shell "chmod 755 $USS_PATH/cbl"
+#zowe zos-uss issue shell "chmod 755 $USS_PATH/cbl"
 
 # Upload files
 zowe zos-files upload dir-to-uss "./cobol-check" "$USS_PATH/cobolcheck" --recursive --binary-files "bin/cobol-check-0.2.16.jar"
