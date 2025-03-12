@@ -48,14 +48,11 @@ run_cobolcheck() {
     #if [ -f "${program}.JCL" ]; then
     if [ -f "../temp/${program}.JCL" ]; then
     #   Copiar el archivo JCL a la carpeta USS
-
         if cp "../temp/${program}.JCL" "${ZOWE_USERNAME}.JCL(${program})"; then
-            echo "Copied ${program}.JCL to /z/z53746/jcl/${program}.JCL"
+            echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL(${program})"
         else
-            echo "Failed to copy ${program}.JCL to /z/z53746/jcl/${program}.JCL"
-        fi
-
-    
+            echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL(${program})"
+        fi 
     #    zowe zos-files upload file-to-data-set "../temp/${program}.JCL" "${ZOWE_USERNAME}.JCL($program)" --zosmf-profile zosmf && \
     #    echo "Copied ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)" || \
     #    echo "Failed to copy ${program}.JCL to ${ZOWE_USERNAME}.JCL($program)"
