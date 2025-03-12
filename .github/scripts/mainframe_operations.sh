@@ -35,10 +35,10 @@ run_cobolcheck() {
 
     if [ -f "CC##99.CBL" ]; then
         # Copy to the MVS dataset
-        if cp "CC##99.CBL" "/z/${ZOWE_USERNAME}.cbl(${program})"; then
-            echo "Copied CC##99.CBL to /z/${ZOWE_USERNAME}.cbl(${program})"
+        if cp "CC##99.CBL" "${ZOWE_USERNAME}.cbl(${program})"; then
+            echo "Copied CC##99.CBL to ${ZOWE_USERNAME}.cbl(${program})"
         else
-            echo "Failed to copy CC##99.CBL to /z/${ZOWE_USERNAME}.cbl(${program})"
+            echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}.cbl(${program})"
         fi
     else
         echo "CC##99.CBL not found for $program"
@@ -49,7 +49,7 @@ run_cobolcheck() {
     if [ -f "../temp/${program}.JCL" ]; then
     #   Copiar el archivo JCL a la carpeta USS
 
-        if cp "../temp/${program}.JCL" "/z/${ZOWE_USERNAME}.JCL(${program})"; then
+        if cp "../temp/${program}.JCL" "${ZOWE_USERNAME}.JCL(${program})"; then
             echo "Copied ${program}.JCL to /z/z53746/jcl/${program}.JCL"
         else
             echo "Failed to copy ${program}.JCL to /z/z53746/jcl/${program}.JCL"
