@@ -35,10 +35,10 @@ run_cobolcheck() {
 
     if [ -f "CC##99.CBL" ]; then
         # Copy to the MVS dataset
-        if cp "CC##99.CBL" "${ZOWE_USERNAME}.cbl(${program})"; then
-            echo "Copied CC##99.CBL to ${ZOWE_USERNAME}/cbl/${program}.CBL"
+        if cp "CC##99.CBL" "/z/${ZOWE_USERNAME}.cbl(${program})"; then
+            echo "Copied CC##99.CBL to /z/${ZOWE_USERNAME}.cbl(${program})"
         else
-            echo "Failed to copy CC##99.CBL to ${ZOWE_USERNAME}/cbl/${program}.CBL"
+            echo "Failed to copy CC##99.CBL to /z/${ZOWE_USERNAME}.cbl(${program})"
         fi
     else
         echo "CC##99.CBL not found for $program"
